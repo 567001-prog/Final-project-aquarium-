@@ -1,0 +1,55 @@
+#setup screen and create turtle
+import turtle as trtl
+t = trtl.Turtle()
+wn = trtl.Screen()
+width = 600
+height = 450
+wn.setup(600, 450)
+
+t.goto(0,0)
+
+#this is making a basic blue rectabgle shape for the body of water
+def ocean_body():
+  t.penup()
+  t.goto(-300,-225)
+  t.pendown()
+
+  t.pencolor("sky blue")
+  t.fillcolor("sky blue")
+  t.begin_fill()
+  for i in range(4):
+    if i % 2 == 0:
+      t.forward(width)
+    elif i % 2 == 1:
+      t.forward(350)
+    t.right(270)
+  t.end_fill()
+#this function is making the top of the rectangle look like waves
+def waves():
+  location = -300
+  t.penup()
+  t.goto(location,125)
+  t.right(90)
+  t.pendown()
+  t.pensize(1)
+  for i in range(6):
+    t.fillcolor("white")
+    t.pencolor("white")
+    t.begin_fill()
+    t.setheading(320)
+    t.circle(80,80)
+    t.end_fill()
+    
+    t.fillcolor("sky blue")
+    t.pencolor("sky blue")
+    t.begin_fill()
+    t.circle(-80,80)
+    t.end_fill()
+    location = location + 205
+    t.goto(location,125)
+  
+#calling the functions
+ocean_body()
+waves()
+
+wn.mainloop()
