@@ -1,0 +1,254 @@
+#setup screen and create turtle
+import turtle as trtl
+wn = trtl.Screen()
+width = 600
+height = 350
+wn.setup(600, 450)
+
+#SECTION : WATER
+t = trtl.Turtle()
+t.speed(10)
+t.goto(0,0)
+#this is making a basic blue rectabgle shape for the body of water
+def ocean_body():
+  t.penup()
+  t.goto(-300,-225)
+  t.pendown()
+
+  t.pencolor("sky blue")
+  t.fillcolor("sky blue")
+  t.begin_fill()
+  for i in range(4):
+    if i % 2 == 0:
+      t.forward(width)
+    elif i % 2 == 1:
+      t.forward(height)
+    t.right(270)
+  t.end_fill()
+#this function is making the top of the rectangle look like waves
+def waves():
+  location = -300
+  t.penup()
+  t.goto(location,125)
+  t.right(90)
+  t.pendown()
+  t.pensize(1)
+  for i in range(3):
+    t.fillcolor("white")
+    t.pencolor("white")
+    t.begin_fill()
+    t.setheading(320)
+    t.circle(80,80)
+    t.end_fill()
+    
+    t.fillcolor("sky blue")
+    t.pencolor("sky blue")
+    t.begin_fill()
+    t.circle(-80,80)
+    t.end_fill()
+    location = location + 205
+    t.goto(location,125)
+  t.hideturtle() 
+#calling the functions
+ocean_body()
+waves()
+
+
+#SECTION : SAND
+painter = trtl.Turtle()
+painter.pensize = 90
+def make_sand_base(): 
+  painter.penup()
+  painter.goto(-300,-150)
+  painter.pendown()
+  painter.pencolor("LightGoldenrod1")
+  painter.fillcolor("LightGoldenrod1")
+  painter.begin_fill()
+  painter.forward(600)
+  painter.right(90)
+  painter.forward(100)
+  painter.right(90)
+  painter.forward(600)
+  painter.right(90)
+  painter.forward(100)
+  painter.end_fill()
+def make_sand_details(): 
+  painter.right(90)
+  painter.right(90)
+  painter.forward(20)
+  painter.left(90)
+  painter.pensize=10
+  for details in range(12):
+    painter.penup()
+    painter.forward(20)
+    painter.pencolor("tan2")
+    painter.pensize=10
+    painter.pendown()
+    painter.forward(30)
+def make_more_sand_details():
+  painter.right(90)
+  painter.forward(20)
+  painter.right(90)
+  for moredetails in range(12):
+    painter.penup()
+    painter.forward(20)
+    painter.pencolor("tan2")
+    painter.pensize=10
+    painter.pendown()
+    painter.forward(30)
+  painter.left(90)
+  painter.forward(20)
+  painter.left(90)
+  for evenmoredetails in range(12):
+    painter.penup()
+    painter.forward(20)
+    painter.pencolor("tan2")
+    painter.pensize=10
+    painter.pendown()
+    painter.forward(30)
+    
+make_sand_base()
+make_sand_details()
+make_more_sand_details()
+painter.penup()
+painter.hideturtle()
+
+
+
+#SECTION : TALL KELP
+k = trtl.Turtle()
+k.speed(10)
+def tall_kelp():
+  for i in range(2):
+    if i % 2 == 1:
+      basex = -250
+      basey = -180
+      color = "olive drab"
+    if i % 2 == 0:
+      basex = 250
+      basey = -180
+      color = "yellow green"
+    def kelp():
+      #start
+      k.penup()
+      k.goto( basex , basey )
+      k.pendown()
+      k.pencolor(color)
+      k.pensize(7)
+
+      #left setup
+      k.penup()
+      k.goto( basex , basey )
+      k.fillcolor(color)
+      k.pensize(1)
+      k.pendown()
+      
+      #left side of leaves
+      heading = 75
+      forward = 25
+      for i in range(9):
+        k.penup()
+        k.setheading(heading)
+        k.forward(forward)
+        k.begin_fill()
+        k.pendown()
+        k.circle(20,100)
+        k.right(270)
+        k.circle(20,100)
+        k.end_fill()
+        if i <= 3:
+          heading = heading + 10
+        else:
+          heading = heading - 5
+          forward = 20
+      #right set up
+      k.penup()
+      k.setheading(80)
+      heading = 325 
+      #right side of leaves
+      for i in range(9):
+        if i != 0:
+          k.forward(25)
+        k.setheading(heading)
+        k.begin_fill()
+        k.pendown()
+        k.circle(20,100)
+        k.right(270)
+        k.circle(20,100)
+        k.end_fill()
+        if i < 3:
+          heading = heading + 10
+        elif i == 3:
+          heading = 348
+        else:
+          heading = heading - 10
+          forward = 20
+    kelp()
+def med_kelp():
+  for i in range(2):
+    if i % 2 == 1:
+      basex = -200
+      basey = -200
+      color = "yellow green"
+    if i % 2 == 0:
+      basex = 200
+      basey = -200
+      color = "olive drab"
+    def kelp():
+      #start
+      k.penup()
+      k.goto( basex , basey )
+      k.pendown()
+      k.pencolor(color)
+      k.pensize(7)
+
+      #left setup
+      k.penup()
+      k.goto( basex , basey )
+      k.fillcolor(color)
+      k.pensize(1)
+      k.pendown()
+      
+      #left side of leaves
+      heading = 75
+      forward = 25
+      for i in range(5):
+        k.penup()
+        k.setheading(heading)
+        k.forward(forward)
+        k.begin_fill()
+        k.pendown()
+        k.circle(20,100)
+        k.right(270)
+        k.circle(20,100)
+        k.end_fill()
+        if i <= 3:
+          heading = heading + 10
+        else:
+          heading = heading - 5
+          forward = 20
+      #right set up
+      k.penup()
+      k.setheading(80)
+      heading = 350
+      #right side of leaves
+      for i in range(5):
+        if i != 0:
+          k.forward(25)
+        k.setheading(heading)
+        k.begin_fill()
+        k.pendown()
+        k.circle(20,100)
+        k.right(270)
+        k.circle(20,100)
+        k.end_fill()
+        heading = heading - 10
+        forward = 20
+    kelp()
+
+tall_kelp()
+med_kelp()
+
+
+
+wn.mainloop()
