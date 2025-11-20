@@ -1,0 +1,24 @@
+
+#SECTION : FISH
+blue_fish = "bluefish2.gif"
+wn.addshape(blue_fish)
+blue = trtl.Turtle(shape=blue_fish)
+
+blue.hideturtle()
+blue.penup()
+blue.goto(350, 0)
+blue.showturtle()
+blue.speed(1)
+blue.penup()
+for i in range(3):
+  blue.setheading(150)
+  blue.circle(150,60)
+  blue.circle(-150,60)
+
+
+
+
+
+
+
+wn.mainloop()
