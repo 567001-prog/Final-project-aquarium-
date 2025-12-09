@@ -1,0 +1,956 @@
+#setup screen and create turtle
+import turtle as trtl
+wn = trtl.Screen()
+width = 600
+height = 400
+wn.setup(600, 450)
+
+#SECTION : WATER
+def water():
+  t = trtl.Turtle()
+  t.speed(10)
+  t.goto(0,0)
+  #this is making a basic blue rectabgle shape for the body of water
+  def ocean_body():
+    t.penup()
+    t.goto(-300,-225)
+    t.pendown()
+  
+    t.pencolor("sky blue")
+    t.fillcolor("sky blue")
+    t.begin_fill()
+    for i in range(4):
+      if i % 2 == 0:
+        t.forward(width)
+      elif i % 2 == 1:
+        t.forward(height)
+      t.right(270)
+    t.end_fill()
+  #this function is making the top of the rectangle look like waves
+  def waves():
+    location = -300
+    t.penup()
+    t.goto(location,175)
+    t.setheading(320)
+    t.pendown()
+    t.pensize(1)
+    for i in range(3):
+      t.fillcolor("white")
+      t.pencolor("white")
+      t.begin_fill()
+      t.setheading(320)
+      t.circle(80,80)
+      t.end_fill()
+      
+      t.fillcolor("sky blue")
+      t.pencolor("sky blue")
+      t.begin_fill()
+      t.circle(-80,80)
+      t.end_fill()
+      location = location + 205
+      t.goto(location,175)
+    t.hideturtle() 
+  #calling the functions
+  ocean_body()
+  waves()
+
+#SECTION : SAND
+def sand():
+  painter = trtl.Turtle()
+  painter.pensize(2)
+  def make_sand_base(): 
+    painter.penup()
+    painter.goto(-300,-150)
+    painter.pendown()
+    painter.pencolor("LightGoldenrod1")
+    painter.fillcolor("LightGoldenrod1")
+    painter.begin_fill()
+    painter.forward(600)
+    painter.right(90)
+    painter.forward(100)
+    painter.right(90)
+    painter.forward(600)
+    painter.right(90)
+    painter.forward(100)
+    painter.end_fill()
+  def make_sand_details(): 
+    painter.right(90)
+    painter.right(90)
+    painter.forward(20)
+    painter.left(90)
+    painter.pensize=10
+    for details in range(12):
+      painter.penup()
+      painter.forward(20)
+      painter.pencolor("tan2")
+      painter.pensize=10
+      painter.pendown()
+      painter.forward(30)
+  def make_more_sand_details():
+    painter.right(90)
+    painter.forward(20)
+    painter.right(90)
+    for moredetails in range(12):
+      painter.penup()
+      painter.forward(20)
+      painter.pencolor("tan2")
+      painter.pensize=10
+      painter.pendown()
+      painter.forward(30)
+    painter.left(90)
+    painter.forward(20)
+    painter.left(90)
+    for evenmoredetails in range(12):
+      painter.penup()
+      painter.forward(20)
+      painter.pencolor("tan2")
+      painter.pensize=10
+      painter.pendown()
+      painter.forward(30)
+  make_sand_base()
+  make_sand_details()
+  make_more_sand_details()
+
+#SECTION : ROCK
+def big_rock():
+  def rock():
+    painter = trtl.Turtle()
+    painter.penup()
+    painter.hideturtle()
+    painter.penup()
+    painter.goto(150,-200)
+    painter.pendown()
+    #first circle of rock
+    painter.pencolor("#708090")
+    painter.fillcolor("#708090")
+    painter.begin_fill()
+    painter.circle(60)
+    painter.end_fill()
+    #second circle of rock 
+    painter.penup()
+    painter.left(90)
+    painter.penup()
+    painter.forward(105)
+    painter.pencolor("#708090")
+    painter.fillcolor("#708090")
+    painter.begin_fill()
+    painter.pendown()
+    painter.circle(35)
+    painter.end_fill()
+    painter.right(130)
+    #third circle of rock 
+    painter.penup()
+    painter.forward(5)
+    painter.pendown()
+    painter.pencolor("#708090")
+    painter.fillcolor("#708090")
+    painter.begin_fill()
+    painter.circle(35)
+    painter.end_fill()
+    #fourth circle of rock
+    painter.left(130)
+    painter.forward(50)
+    painter.pencolor("#708090")
+    painter.fillcolor("#708090")
+    painter.begin_fill()
+    painter.circle(30)
+    painter.end_fill()
+    #top line of rock 
+    painter.right(60)
+    painter.forward(25)
+    painter.left(130)
+    painter.pencolor("#708090")
+    painter.pensize(22)
+    painter.left(10)
+    painter.forward(50)
+    #left side crack of rock 
+    painter.pencolor("#36454F")
+    painter.penup()
+    painter.pensize(3)
+    painter.forward(50)
+    painter.left(90)
+    painter.forward(40)
+    painter.left(90)
+    painter.forward(25)
+    painter.pendown()
+    painter.forward(15)
+    painter.left(50)
+    painter.forward(15)
+    painter.right(50)
+    painter.forward(15)
+    painter.penup()
+    # right side crack of rock 
+    painter.right(90)
+    painter.forward(70)
+    painter.pendown()
+    painter.pencolor("#36454F")
+    painter.penup()
+    painter.left(120)
+    painter.forward(40)
+    painter.pendown()
+    painter.forward(15)
+    painter.right(50)
+    painter.forward(15)
+    painter.left(80)
+    painter.forward(17)
+    #green moss left side 
+    painter.penup()
+    painter.left(160)
+    painter.forward(100)
+    painter.right(90)
+    painter.forward(20)
+    painter.pendown()
+    painter.pencolor("#658B38")
+    painter.pensize(20)
+    painter.forward(10)
+    #green plant seaweed top
+    painter.pencolor("#8FB939")
+    painter.penup()
+    painter.right(75)
+    painter.forward(130)
+    painter.pensize(10)
+    painter.pendown()
+    painter.forward(10)
+    painter.left(50)
+    painter.forward(15)
+    painter.right(40)
+    painter.forward(20)
+    #inside of green plants 
+    painter.right(180)
+    painter.pencolor("#547A5B")
+    painter.pensize(3)
+    painter.forward(20)
+    painter.left(40)
+    painter.forward(20)
+    painter.right(50)
+    painter.forward(15)
+    painter.right(90)
+  rock()
+
+#SECTION : SAND CASTLE
+def sand_casl():
+  s = trtl.Turtle()
+  s.speed(10)
+  s.pensize(1)
+  s.pencolor("peru")
+  s.fillcolor("khaki")
+  s.penup()
+  def sand_castle():
+    xcor = 50
+    ycor = -150
+    #2 side bases
+    for i in range(2):
+      s.goto(xcor,ycor)
+      s.pendown()
+      s.begin_fill()
+      s.setheading(45)
+      s.circle(60,360,4)
+      s.end_fill()
+      xcor = -150
+      ycor = -150
+      s.penup()
+    #side towers
+    s.fillcolor("khaki")
+    xcor = -210
+    ycor = -65
+    for i in range(2):
+      s.penup()
+      s.goto(xcor,ycor)
+      s.pendown()
+      s.setheading(315)
+      s.begin_fill()
+      s.circle(40,360,4)
+      s.end_fill()
+      s.penup()
+      xcor = -40
+    #center base
+    for i in range(2):
+      s.setheading(45)
+      s.goto(-10,-150)
+      s.pendown()
+      s.begin_fill()
+      s.circle(120,360,4)
+      s.end_fill()
+    #center roof
+    s.penup()
+    s.goto(-200,20)
+    s.pendown()
+    s.setheading(0)
+    s.begin_fill()
+    s.forward(200)
+    s.right(215)
+    s.forward(120)
+    s.right(290)
+    s.forward(120)
+    s.end_fill()
+    #center railing
+    s.penup()
+    s.goto(-200,10)
+    s.fillcolor("dark khaki")
+    s.setheading(0)
+    s.pendown()
+    s.begin_fill()
+    s.forward(200)
+    s.setheading(90)
+    s.forward(40)
+    for i in range(2):
+      s.setheading(180)
+      s.forward(40)
+      s.setheading(270)
+      s.forward(20)
+      s.setheading(180)
+      s.forward(40)
+      s.setheading(90)
+      s.forward(20)
+    s.setheading(180)
+    s.forward(40)
+    s.setheading(270)
+    s.forward(40)
+    s.end_fill()
+    #door
+    s.penup()
+    s.goto(-65,-150)
+    s.setheading(90)
+    s.pensize(5)
+    s.pencolor("dark khaki")
+    s.pendown()
+    s.forward(80)
+    s.circle(30,180)
+    s.forward(80)
+    s.penup()
+    s.goto(-110,-105)
+    s.setheading(0)
+    s.pendown()
+    s.circle(5)
+    s.hideturtle()
+  
+  sand_castle()
+
+#SECTION : FLOOR GREENERY
+def floor_green():
+  painter = trtl.Turtle()
+  painter.setheading(0)
+  def make_a_leaf(): 
+    painter.pencolor('SpringGreen4')
+    painter.pensize(10)
+    painter.pendown()
+    painter.left(30)
+    painter.forward(10)
+    painter.right(20)
+    painter.forward(10)
+    painter.left(20)
+    painter.forward(10)
+    painter.left(40)
+    painter.forward(10)
+    painter.right(40)
+    painter.forward(10)
+    painter.left(160)
+    painter.forward(10)
+    painter.left(50)
+    painter.forward(20)
+    painter.right(40)
+    painter.forward(20)
+  def make_plant(): 
+    painter.penup()
+    make_a_leaf()
+    painter.right(90)
+    make_a_leaf()
+    painter.left(20)
+    make_a_leaf()
+    painter.right(90)
+    make_a_leaf()
+    painter.left(120)
+    make_a_leaf()
+  def make_random_plants(): 
+    painter.penup()
+    painter.goto(-150,-150)
+    make_plant()
+    painter.penup()
+    painter.right(200)
+    painter.goto(140,-200)
+    make_plant()
+  
+  make_random_plants()
+  
+  painter.penup()
+  painter.goto(0,0)
+  painter.hideturtle()
+
+#SECTION : KELP
+def kelp():
+  k = trtl.Turtle()
+  k.speed(10)
+  def tall_kelp():
+    for i in range(2):
+      if i % 2 == 1:
+        basex = -250
+        basey = -180
+        color = "olive drab"
+      if i % 2 == 0:
+        basex = 250
+        basey = -180
+        color = "yellow green"
+      def kelp():
+        #start
+        k.penup()
+        k.goto( basex , basey )
+        k.pendown()
+        k.pencolor(color)
+        k.pensize(7)
+  
+        #left setup
+        k.penup()
+        k.goto( basex , basey )
+        k.fillcolor(color)
+        k.pensize(1)
+        k.pendown()
+        
+        #left side of leaves
+        heading = 75
+        forward = 25
+        for i in range(9):
+          k.penup()
+          k.setheading(heading)
+          k.forward(forward)
+          k.begin_fill()
+          k.pendown()
+          k.circle(20,100)
+          k.right(270)
+          k.circle(20,100)
+          k.end_fill()
+          if i <= 3:
+            heading = heading + 10
+          else:
+            heading = heading - 5
+            forward = 20
+        #right set up
+        k.penup()
+        k.setheading(80)
+        heading = 325 
+        #right side of leaves
+        for i in range(9):
+          if i != 0:
+            k.forward(25)
+          k.setheading(heading)
+          k.begin_fill()
+          k.pendown()
+          k.circle(20,100)
+          k.right(270)
+          k.circle(20,100)
+          k.end_fill()
+          if i < 3:
+            heading = heading + 10
+          elif i == 3:
+            heading = 348
+          else:
+            heading = heading - 10
+            forward = 20
+      kelp()
+  def med_kelp():
+    for i in range(2):
+      if i % 2 == 1:
+        basex = -200
+        basey = -200
+        color = "yellow green"
+      if i % 2 == 0:
+        basex = 200
+        basey = -200
+        color = "olive drab"
+      def kelp():
+        #start
+        k.penup()
+        k.goto( basex , basey )
+        k.pendown()
+        k.pencolor(color)
+        k.pensize(7)
+  
+        #left setup
+        k.penup()
+        k.goto( basex , basey )
+        k.fillcolor(color)
+        k.pensize(1)
+        k.pendown()
+        
+        #left side of leaves
+        heading = 75
+        forward = 25
+        for i in range(5):
+          k.penup()
+          k.setheading(heading)
+          k.forward(forward)
+          k.begin_fill()
+          k.pendown()
+          k.circle(20,100)
+          k.right(270)
+          k.circle(20,100)
+          k.end_fill()
+          if i <= 3:
+            heading = heading + 10
+          else:
+            heading = heading - 5
+            forward = 20
+        #right set up
+        k.penup()
+        k.setheading(80)
+        heading = 350
+        #right side of leaves
+        for i in range(5):
+          if i != 0:
+            k.forward(25)
+          k.setheading(heading)
+          k.begin_fill()
+          k.pendown()
+          k.circle(20,100)
+          k.right(270)
+          k.circle(20,100)
+          k.end_fill()
+          heading = heading - 10
+          forward = 20
+      kelp()
+  
+  tall_kelp()
+  med_kelp()
+  
+#SECTION : LOG
+def log():
+  painter = trtl.Turtle()
+  painter.setheading(0)
+  #make flowers 
+  def make_flower_petal(): 
+   painter.pencolor('IndianRed2')
+   painter.fillcolor('IndianRed2')
+   painter.begin_fill()
+   painter.circle(7,360,8)
+   painter.end_fill()
+   
+  def make_flower_petal_two(): 
+    painter.pencolor('LightPink1')
+    painter.fillcolor('LightPink1')
+    painter.begin_fill()
+    painter.circle(7,360,8)
+    painter.end_fill()
+  
+  def make_first_flower(): 
+    painter.penup()
+    painter.goto(230,-190)
+    painter.pencolor('DarkOliveGreen3')
+    painter.pendown()
+    painter.pensize(10)
+    painter.right(-90)
+    painter.forward(30)
+    painter.pencolor('IndianRed2')
+    painter.right(90)
+    make_flower_petal()
+    painter.goto(240,-150)
+    painter.right(90)
+    make_flower_petal()
+    painter.goto(225,-130)
+    make_flower_petal()
+    painter.goto(210,-140)
+    make_flower_petal()
+    painter.goto(240,-130)
+    make_flower_petal()
+  def make_second_flower(): 
+    painter.penup()
+    painter.goto(280,-200)
+    painter.pencolor('DarkOliveGreen3')
+    painter.pendown()
+    painter.right(180)
+    painter.pensize(10)
+    painter.forward(50)
+    make_flower_petal_two()
+    painter.forward(20)
+    make_flower_petal_two()
+    painter.right(90)
+    painter.forward(10)
+    make_flower_petal_two()
+    painter.right(90)
+    painter.forward(10)
+    make_flower_petal_two()
+    
+  def make_middle_of_flowers():
+    painter.goto(280,-135)
+    painter.pencolor('darkgoldenrod1')
+    painter.circle(3,360)
+    painter.penup()
+    painter.goto(230,-140)
+    painter.pendown()
+    painter.circle(3,360)
+  
+  def make_a_log(): 
+    painter.penup()
+    painter.setheading(260)
+    painter.goto(230,-190)
+    painter.pencolor('sienna4')
+    painter.pendown()
+    painter.left(110)
+    painter.forward(70)
+    painter.right(90)
+    painter.forward(10)
+    painter.pencolor('sienna3')
+    painter.right(90)
+    painter.forward(70)
+    painter.left(90)
+    painter.forward(5)
+    painter.pencolor('sienna4')
+    painter.left(90)
+    painter.forward(70)
+    painter.right(90)
+    painter.forward(5)
+    painter.right(90)
+    painter.pencolor('sienna3')
+    painter.forward(70)
+  
+  
+  make_first_flower()
+  make_second_flower()
+  make_middle_of_flowers()
+  
+  
+  make_a_log()
+  
+  
+  
+  painter.penup()
+  painter.goto(0,0)
+  painter.hideturtle()
+
+
+#SECTION : CORAL
+def coral():
+  crl = trtl.Turtle()
+  def pink_coral():
+    crl.penup()
+    crl.goto(-220,-180)
+    crl.pensize(4)
+    crl.pencolor("tomato")
+    crl.penup()
+    crl.goto(-230,-180)
+    crl.pendown()
+    crl.begin_fill()
+    crl.circle(30,40)
+    crl.goto(-230,-180)
+    for i in range(6):
+      crl.left(20)
+      crl.begin_fill()
+      crl.circle(-30,-40)
+      crl.goto(-230,-180)
+    crl.penup()
+    crl.goto(0,0)
+  def orange_coral():
+    crl.goto(80,-200) 
+    crl.pensize(8)
+    crl.pencolor("crimson")
+    crl.pendown()
+    
+    crl.circle(60,40)
+    crl.penup()
+    crl.setheading(0)
+    crl.goto(75,-200)
+    crl.pendown()
+    
+    crl.circle(50,55)
+    crl.setheading(0)
+    crl.penup()
+    
+    crl.pencolor("orange red")
+    crl.pensize(7)
+    crl.goto(80,-200)
+    crl.pendown()
+    crl.circle(70,40)
+    crl.penup()
+    crl.goto(75,-200)
+    crl.pendown()
+    crl.right(50)
+    crl.circle(110,-20)
+    crl.penup()
+    crl.left(60)
+    crl.goto(85,-200)
+    crl.pendown()
+    crl.circle(50,-40)
+    crl.setheading(0)
+    crl.penup()
+    crl.goto(80,-200)
+    crl.pendown()
+    crl.right(50)
+    crl.circle(50,-40)
+    crl.penup
+    crl.goto(80,-200)
+    crl.pendown
+    crl.left(50)
+    crl.circle(50,40)
+    crl.penup()
+    crl.goto(0,0)
+  def teal_coral():
+    crl.setheading(0)
+    crl.pensize(10)
+    crl.left(25)
+    crl.pencolor("teal")
+    crl.goto(-130,-220)
+    crl.pendown()
+    crl.circle(50,70)
+    crl.setheading(0)
+    crl.penup()
+    crl.goto(-130,-220)
+    crl.pendown()
+    crl.circle(50,60)
+    crl.penup()
+    crl.setheading(0)
+    crl.goto(-130,-220)
+    crl.left(180)
+    crl.pendown()
+    crl.circle(-50,80)
+    crl.penup()
+    crl.setheading(0)
+    crl.goto(-130,-220)
+    crl.left(150)
+    crl.pendown()
+    crl.circle(-60,70)
+    crl.penup()
+    crl.setheading(0)
+    crl.goto(-130,-220)
+    crl.left(120)
+    crl.pendown()
+    crl.circle(-60,60)
+    crl.penup()
+    crl.setheading(0)
+    crl.pencolor("lightseagreen")
+    crl.pensize(8)
+    crl.goto(-130,-220)
+    crl.left(5)
+    crl.pendown()
+    crl.circle(40,90)
+    crl.penup()
+    crl.setheading(0)
+    crl.goto(-130,-220)
+    crl.left(45)
+    crl.pendown()
+    crl.circle(50,60)
+    crl.penup
+    crl.setheading(0)
+    crl.goto(-130,-220)
+    crl.left(145)
+    crl.pendown()
+    crl.circle(-60,50)
+    crl.penup()
+    crl.setheading(0)
+    crl.goto(-130,-220)
+    crl.left(180)
+    crl.pendown()
+    crl.circle(-60,50)
+    crl.penup()
+    crl.goto(0,0)
+  def purple_coral():
+    crl.penup()
+    crl.goto(180,-150)
+    crl.pensize(2)
+    crl.pencolor("indigo")
+    crl.pendown()
+    crl.begin_fill()
+    for i in range(17):
+      crl.left(8)
+      crl.begin_fill()
+      crl.circle(-30,-40)
+      crl.goto(180,-150)
+    crl.penup()
+    crl.goto(0,0)
+  def blue_turtle():
+    crl.penup()
+    crl.setheading(0)
+    crl.goto(-30,-170)
+    crl.pencolor("mediumvioletred")
+    crl.pensize(6)
+    crl.left(30)
+    crl.pendown()
+    crl.circle(50,50)
+    crl.setheading(0)
+    crl.goto(-30,-170)
+    crl.right(10)
+    crl.circle(50,50)
+    crl.setheading(0)
+    crl.goto(-30,-170)
+    crl.penup()
+    crl.left(180)
+    crl.pendown()
+    crl.circle(-50,50)
+    crl.goto(-30,-170)
+    crl.setheading(0)
+    crl.penup()
+    crl.left(150)
+    crl.pendown()
+    crl.circle(-50,50)
+    crl.goto(-30,-170)
+    crl.setheading(0)
+    crl.penup()
+    crl.left(100)
+    crl.pendown()
+    crl.circle(-50,50)
+    crl.goto(-30,-170)
+    crl.pencolor("hotpink")
+    crl.setheading(0)
+    crl.circle(30,50)
+    crl.penup()
+    crl.goto(-30,-170)
+    crl.setheading(0)
+    crl.pendown()
+    crl.left(30)
+    crl.circle(30,50)
+    crl.penup()
+    crl.goto(-30,-170)
+    crl.setheading(0)
+    crl.pendown()
+    crl.left(155)
+    crl.circle(-30,50)
+    crl.penup()
+    crl.goto(-30,-170)
+    crl.setheading(0)
+    crl.pendown()
+    crl.left(180)
+    crl.circle(-30,50)
+    crl.penup()
+    crl.goto(-30,-170)
+    crl.setheading(0)
+    crl.pendown()
+    crl.left(105)
+    crl.circle(-30,50)
+    crl.hideturtle()
+  
+  pink_coral()
+  orange_coral()
+  teal_coral()
+  purple_coral()
+  blue_turtle()
+
+
+
+#SECTION : FISH (kira)
+def fish():
+  blue_fish = "bluefish2.gif"
+  wn.addshape(blue_fish)
+  blue = trtl.Turtle(shape=blue_fish)
+  orange_fish = "osardine3.gif"
+  wn.addshape(orange_fish)
+  orange = trtl.Turtle(shape=orange_fish)
+  orange.hideturtle()
+  def blue_swim():
+    blue.hideturtle()
+    blue.penup()
+    blue.goto(325, 0)
+    blue.showturtle()
+    blue.speed(1)
+    blue.penup()
+    for i in range(3):
+      blue.setheading(150)
+      blue.circle(150,60)
+      blue.circle(-150,60)
+  def orange_swim():
+    orange.hideturtle()
+    orange.penup()
+    orange.goto(-400, 0)
+    orange.showturtle()
+    orange.speed(1)
+    orange.penup()
+    for i in range(3):
+      orange.setheading(335)
+      orange.circle(150,60)
+      orange.circle(-150,60)
+  
+  #SUNFISH code(camille)
+  # import fish
+  sun_fish = "ezgif-85e4d01addd91b7b.gif"
+  wn.addshape(sun_fish)
+  sun = trtl.Turtle(shape=sun_fish)
+  
+  # setup, move fish off-screen
+  sun.penup()
+  sun.goto(340, 0)
+  sun.showturtle()
+  sun.speed(1)
+  sun.penup()
+  
+  # code for fish swimming
+  def sun_swim():
+    for i in range(5):
+      sun.setheading(160)
+      sun.circle(130,50)
+      sun.circle(-130,55)
+      
+  #bubbles
+  def bubbles():
+    t = trtl.Turtle(shape='circle')
+    g = trtl.Turtle(shape='circle')
+    s = trtl.Turtle(shape='circle')
+    
+    painter_list = [t,s,g]
+    
+    for bubbles in painter_list:
+      bubbles.penup()
+      bubbles.color('white')
+      bubbles.speed(1)
+    
+    txpos = -150
+    typos = -150
+    gxpos = 150 
+    gypos = -150
+    sxpos = 0 
+    sypos = -150
+    
+    t.goto(txpos,typos)
+    g.goto(gxpos,gypos)
+    s.goto(sxpos,sypos)
+    
+    t.color('lightblue')
+    g.color('lightblue')
+    s.color('lightblue')
+    
+    t.right(-90)
+    g.right(-90)
+    s.right(-90)
+    
+    for bubbles in range(2):
+      for i in range(30):
+        txpos += 10
+        typos += 10
+        gxpos += 10 
+        gypos += 10
+        sxpos += 10
+        sypos += 10
+        t.goto(txpos,typos)
+        g.goto(gxpos,gypos)
+        s.goto(sxpos,sypos)
+        txpos -= 10
+        typos += 10
+        gxpos -= 10 
+        gypos += 10
+        sxpos -= 10
+        sypos += 10
+        t.goto(txpos,typos)
+        g.goto(gxpos,gypos)
+        s.goto(sxpos,sypos)
+      txpos = -150
+      typos = -150
+      gxpos = 150 
+      gypos = -150
+      sxpos = 0 
+      sypos = -150
+      if typos >= 300 : 
+        t.goto(txpos,typos)
+      if gypos >= 300 : 
+        g.goto(gxpos,gypos)
+      if sypos >= 300 : 
+        s.goto(sxpos,sypos)
+
+  
+  while 1<2:
+    blue_swim()
+    orange_swim()
+    sun_swim()
+    bubbles()
+
+#CALLING ALL FUNCTIONS
+functions = [water, sand, big_rock, sand_casl, floor_green, kelp, log, coral, fish]
+
+for function in functions:
+  function()
+
+wn.mainloop()
