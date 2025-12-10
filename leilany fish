@@ -1,0 +1,15 @@
+#SECTION : FISH
+fish_3 = "output-onlinegiftools.gif"
+wn.addshape(fish_3)
+fish = trtl.Turtle(shape=fish_3)
+
+fish.hideturtle()
+fish.penup()
+fish.goto(350, 0)
+fish.showturtle()
+fish.speed(1)
+fish.penup()
+for i in range(3):
+  fish.setheading(150)
+  fish.circle(150,60)
+  fish.circle(-150,60)
